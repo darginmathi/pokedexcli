@@ -1,34 +1,11 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"pokedexcli/commands"
-	"strings"
-)
+import "github.com/darginmathi/pokedexcli/structs"
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-
-	for {
-		fmt.Printf("Pokedex > ")
-		if scanner.Scan() {
-			input := scanner.Text()
-			cleaninput := cleanInput(input)
-			if cmd, ok := commands.Commands[cleaninput[0]]; ok {
-				if err := cmd.Callback(); err != nil {
-					fmt.Println("Error:", err)
-				}
-			} else {
-				fmt.Println("Unknows command")
-			}
-		}
+	// init cfg
+	cfg := &structs.Config{
+		Next: "https://pokeapi.co/api/v2/location-area/",
 	}
-}
-
-// helper fn
-
-func cleanInput(text string) []string {
-	return strings.Fields(strings.ToLower(text))
+	startRepl(cfg)
 }
