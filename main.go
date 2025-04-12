@@ -9,8 +9,7 @@ import (
 )
 
 func main() {
-	pokeClient := pokeapi.NewClient(5 * time.Second)
-	Cache = pokecache.NewCache(5 * time.Minute)
+	pokeClient := pokeapi.NewClient(5*time.Second, 5*time.Minute)
 	fmt.Println("cache initialised:", Cache)
 
 	// init cfg
