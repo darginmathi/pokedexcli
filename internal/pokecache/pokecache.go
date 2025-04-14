@@ -1,7 +1,6 @@
 package pokecache
 
 import (
-	"fmt"
 	"sync"
 	"time"
 )
@@ -26,7 +25,6 @@ func NewCache(interval time.Duration) Cache {
 }
 
 func (c *Cache) Add(key string, val []byte) {
-	fmt.Println("Cacheing:", key)
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.cache[key] = CacheEntry{

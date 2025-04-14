@@ -1,16 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/darginmathi/pokedexcli/internal/pokeapi"
-	"github.com/darginmathi/pokedexcli/internal/pokecache"
 )
 
 func main() {
 	pokeClient := pokeapi.NewClient(5*time.Second, 5*time.Minute)
-	fmt.Println("cache initialised:", Cache)
 
 	// init cfg
 	cfg := &config{
@@ -18,5 +15,3 @@ func main() {
 	}
 	startRepl(cfg)
 }
-
-var Cache *pokecache.Cache
