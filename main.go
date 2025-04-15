@@ -12,6 +12,7 @@ func main() {
 	// init cfg
 	cfg := &config{
 		pokeapiClient: pokeClient,
+		pokeDex:       map[string]pokeapi.PokemonInfo{},
 	}
 	startRepl(cfg)
 }
